@@ -38,6 +38,7 @@ next-env.d.ts
 # Large archives and temporary reference files
 *.zip
 /FragmentMono-Regular.woff2
+/hero-complete-no-button.svg
 /public/hero-reference.jpg
 /public/hero-banner.jpg
 
