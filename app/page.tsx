@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import { Search, Plus } from 'lucide-react';
 import { Navbar } from '@/components/buyer/Navbar';
 import { HeroSection } from '@/components/buyer/HeroSection';
 import { StoreCard } from '@/components/buyer/StoreCard';
@@ -13,11 +14,13 @@ import { PaymentModal } from '@/components/buyer/PaymentModal';
 import { OrderTrackerModal } from '@/components/buyer/OrderTrackerModal';
 import { Store, MenuItem, CartItem, Order } from '@/lib/types';
 import { INITIAL_STORES, INITIAL_MENU_ITEMS } from '@/lib/data';
+import { formatRupiah } from '@/lib/format';
 
 export default function CanteenHomePage() {
   const [stores, setStores] = useState<Store[]>(INITIAL_STORES);
   const [menuItems, setMenuItems] = useState<MenuItem[]>(INITIAL_MENU_ITEMS);
   const [selectedStore, setSelectedStore] = useState<Store | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Cart state
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -186,6 +189,17 @@ export default function CanteenHomePage() {
     setIsOrderTrackerOpen(true); // Open live tracking
   };
 
+  const matchingMenuItems = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return menuItems.filter(
+      (m) =>
+        m.name.toLowerCase().includes(q) ||
+        m.category.toLowerCase().includes(q) ||
+        m.description.toLowerCase().includes(q)
+    );
+  }, [menuItems, searchQuery]);
+
   const openStoresCount = useMemo(
     () => stores.filter((s) => s.isOpen).length,
     [stores]
@@ -223,36 +237,114 @@ export default function CanteenHomePage() {
             />
 
             <section id="stan-kantin" className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
                 <div>
                   <h2 className="font-display font-bold text-xl sm:text-2xl text-[#146B3E] tracking-tight">
-                    Stan Kantin
+                    {searchQuery.trim() ? `Hasil Pencarian "${searchQuery}"` : 'Stan Kantin'}
                   </h2>
                   <p className="text-xs text-charm-muted mt-0.5">
-                    Pilih stan untuk melihat menu dan memesan langsung
+                    {searchQuery.trim()
+                      ? `Ditemukan ${matchingMenuItems.length} menu yang cocok`
+                      : 'Pilih stan untuk melihat menu dan memesan langsung'}
                   </p>
                 </div>
-                <span className="text-xs font-mono font-medium text-charm-muted">
-                  {stores.length} Stan Tersedia
-                </span>
+
+                {/* Instant Search Bar */}
+                <div className="relative w-full sm:w-72">
+                  <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-charm-muted" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Cari menu (mie, bakso, es, nasi...)"
+                    className="w-full text-xs bg-white border border-charm-border rounded-full pl-9 pr-4 py-2 text-charm-heading placeholder:text-charm-muted/60 focus:outline-none focus:border-emerald-700 transition-colors shadow-xs"
+                  />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-charm-muted hover:text-charm-heading"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
               </div>
 
-              {/* Grid of Stores */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-                {stores.map((store) => {
-                  const storeMenuCount = menuItems.filter(
-                    (m) => m.storeId === store.id
-                  ).length;
-                  return (
-                    <StoreCard
-                      key={store.id}
-                      store={store}
-                      menuCount={storeMenuCount}
-                      onSelect={(s) => setSelectedStore(s)}
-                    />
-                  );
-                })}
-              </div>
+              {/* If Searching: Display Matching Menus */}
+              {searchQuery.trim() ? (
+                matchingMenuItems.length === 0 ? (
+                  <div className="bg-white border border-charm-border rounded-2xl p-8 text-center">
+                    <p className="text-xs text-charm-muted">
+                      Tidak ada menu yang cocok dengan kata kunci &ldquo;{searchQuery}&rdquo;.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery('')}
+                      className="mt-3 text-xs font-bold text-emerald-800 hover:underline"
+                    >
+                      Tampilkan Semua Stan
+                    </button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {matchingMenuItems.map((item) => {
+                      const stall = stores.find((s) => s.id === item.storeId);
+                      return (
+                        <div
+                          key={item.id}
+                          onClick={() => {
+                            if (item.isAvailable && (!stall || stall.isOpen)) {
+                              handleOpenMenuItemDetail(item);
+                            }
+                          }}
+                          className="bg-white border border-charm-border rounded-2xl p-4 flex flex-col justify-between hover:border-slate-300 transition-colors cursor-pointer group shadow-xs"
+                        >
+                          <div>
+                            <div className="flex items-center justify-between text-[11px] text-charm-muted mb-1">
+                              <span className="font-mono text-emerald-800 font-medium">
+                                {stall ? stall.name : 'Stan Kantin'}
+                              </span>
+                              <span>{item.category}</span>
+                            </div>
+                            <h3 className="font-display font-bold text-sm text-charm-heading group-hover:text-emerald-800 transition-colors">
+                              {item.name}
+                            </h3>
+                            <p className="text-[11px] text-charm-muted mt-1 line-clamp-2">
+                              {item.shortDescription || item.description}
+                            </p>
+                          </div>
+                          <div className="mt-3 pt-2 border-t border-charm-border/60 flex items-center justify-between">
+                            <span className="font-mono text-xs font-bold text-emerald-800">
+                              {formatRupiah(item.price)}
+                            </span>
+                            <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                              Pilih Menu +
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )
+              ) : (
+                /* Default View: Grid of Stores */
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+                  {stores.map((store) => {
+                    const storeMenuCount = menuItems.filter(
+                      (m) => m.storeId === store.id
+                    ).length;
+                    return (
+                      <StoreCard
+                        key={store.id}
+                        store={store}
+                        menuCount={storeMenuCount}
+                        onSelect={(s) => setSelectedStore(s)}
+                      />
+                    );
+                  })}
+                </div>
+              )}
             </section>
           </div>
         )}
