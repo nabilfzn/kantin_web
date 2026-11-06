@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Store as StoreIcon,
   Sparkles,
+  Printer,
 } from 'lucide-react';
 import { Order, StoreOrderStatus } from '@/lib/types';
 import { Modal } from '@/components/ui/Modal';
@@ -164,11 +165,11 @@ export function OrderTrackerModal({
           </div>
         </div>
 
-        {/* Order Details Accordion / Summary */}
-        <div className="p-3.5 rounded-2xl bg-white border border-charm-border space-y-2.5">
+        {/* Order Details Accordion / Summary (Printable) */}
+        <div className="printable-receipt p-3.5 rounded-2xl bg-white border border-charm-border space-y-2.5">
           <div className="flex items-center justify-between text-xs font-bold text-charm-heading border-b border-charm-border/70 pb-2">
             <span>Rincian Menu ({order.items.length} item)</span>
-            <span className="text-charm-brand-text">{formatRupiah(order.totalPayable)}</span>
+            <span className="font-mono font-bold text-emerald-800">{formatRupiah(order.totalPayable)}</span>
           </div>
 
           <div className="space-y-2 text-xs">
@@ -194,14 +195,23 @@ export function OrderTrackerModal({
           </div>
         </div>
 
-        {/* Close Button */}
-        <div className="pt-1">
+        {/* Action Buttons */}
+        <div className="pt-1 flex items-center gap-2 no-print">
+          <button
+            type="button"
+            onClick={() => window.print()}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 rounded-full text-xs font-bold text-charm-heading bg-charm-accent hover:bg-[#E2E3D8] transition-colors border border-charm-border"
+          >
+            <Printer size={14} />
+            <span>Cetak Struk Pesanan</span>
+          </button>
+
           <button
             type="button"
             onClick={onClose}
-            className="w-full py-2.5 rounded-full text-xs font-bold text-charm-body hover:text-charm-heading hover:bg-black/5 transition-colors border border-charm-border"
+            className="flex-1 py-2.5 rounded-full text-xs font-bold text-charm-body hover:text-charm-heading hover:bg-black/5 transition-colors border border-charm-border"
           >
-            Tutup Pelacak (Pesanan Tetap Tersimpan di Perangkat)
+            Tutup
           </button>
         </div>
       </div>

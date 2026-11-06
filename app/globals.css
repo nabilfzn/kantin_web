@@ -134,3 +134,36 @@ pre {
   outline: 2px solid var(--charm-brand);
   outline-offset: 2px;
 }
+
+/* ==========================================================
+   PRINT MEDIA RULES (Struk Pembelian Kasir / Pelanggan)
+   ========================================================== */
+@media print {
+  body {
+    background: white !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .printable-receipt,
+  .printable-receipt * {
+    visibility: visible;
+  }
+  .printable-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 12px;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
