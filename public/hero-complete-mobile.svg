@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 280" role="img" aria-labelledby="title-mob desc-mob">
+<title id="title-mob">Pesan Makanan Kantin Lebih Cepat dan Rapi</title>
+<desc id="desc-mob">Hero kantin hijau minimalis vertikal proporsional untuk tampilan mobile tanpa tombol.</desc>
+<defs>
+  <linearGradient id="bg-m" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#075A30"/><stop offset=".55" stop-color="#006438"/><stop offset="1" stop-color="#0B6B37"/></linearGradient>
+  <linearGradient id="wave-m" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1A9454"/><stop offset="1" stop-color="#43A965"/></linearGradient>
+  <linearGradient id="bowl-m" x1="0" y1="0" x2=".65" y2="1"><stop offset="0" stop-color="#FFFDF8"/><stop offset=".53" stop-color="#E6E6E0"/><stop offset="1" stop-color="#ADB9B0"/></linearGradient>
+  <radialGradient id="broth-m"><stop offset="0" stop-color="#A94E18"/><stop offset=".75" stop-color="#804015"/><stop offset="1" stop-color="#593115"/></radialGradient>
+  <radialGradient id="meat-m"><stop offset="0" stop-color="#DCC59A"/><stop offset=".7" stop-color="#B38C5E"/><stop offset="1" stop-color="#8B6943"/></radialGradient>
+  <filter id="shadow-m" x="-30%" y="-30%" width="160%" height="180%"><feGaussianBlur stdDeviation="6"/></filter>
+  <clipPath id="noodleClip-m"><ellipse cx="465" cy="140" rx="98" ry="42"/></clipPath>
+</defs>
+<rect width="600" height="280" rx="24" fill="url(#bg-m)"/>
+<clipPath id="outer-m"><rect width="600" height="280" rx="24"/></clipPath>
+<g clip-path="url(#outer-m)">
+  <path d="M0 248 C70 215 110 250 190 280 H0Z" fill="#1C9654" opacity=".65"/>
+  <path d="M220 280 C300 205 380 185 450 198 C530 212 570 178 600 140 V280 Z" fill="url(#wave-m)" opacity=".7"/>
+  <path d="M410 280 C480 225 545 220 600 175 V280Z" fill="#0B7B43" opacity=".35"/>
+</g>
+
+<!-- Mobile Typography -->
+<g font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" fill="#ffffff" font-weight="750" font-size="27" letter-spacing="-0.9">
+  <text x="32" y="70">Pesan Makanan Kantin</text>
+  <text x="32" y="106">Lebih Cepat &amp; Rapi</text>
+</g>
+
+<!-- Vector Noodle Bowl for Mobile -->
+<!-- Bowl shadow -->
+<ellipse cx="465" cy="226" rx="108" ry="16" fill="#001F15" opacity=".28" filter="url(#shadow-m)"/>
+
+<!-- Steam lines -->
+<g opacity=".16" fill="none" stroke="#CFEAD2" stroke-width="7" stroke-linecap="round">
+  <path d="M450 94 C428 69 465 61 443 30"/>
+  <path d="M476 93 C499 67 458 58 483 26"/>
+  <path d="M495 97 C520 71 500 56 504 42"/>
+</g>
+
+<!-- Bowl back rim & broth -->
+<ellipse cx="465" cy="140" rx="106" ry="49" fill="#FAFAF5"/>
+<ellipse cx="465" cy="140" rx="98" ry="42" fill="url(#broth-m)"/>
+
+<g clip-path="url(#noodleClip-m)">
+  <!-- Greens -->
+  <g fill="#327D2F">
+    <path d="M371 133 Q384 84 415 107 Q409 128 371 133Z"/>
+    <path d="M383 127 Q396 93 425 111 Q422 130 383 127Z"/>
+    <path d="M511 119 Q538 87 570 120 Q547 140 511 119Z"/>
+    <path d="M520 134 Q550 107 579 134 L559 152Z"/>
+  </g>
+  <g fill="none" stroke="#80B640" stroke-width="3">
+    <path d="M379 127L410 112"/>
+    <path d="M521 127L560 116"/>
+  </g>
+
+  <!-- Noodle strands -->
+  <g fill="none" stroke-linecap="round" stroke-width="5">
+    <path d="M534 122 q7 -6 22 0 t22 -5" stroke="#EDA52F"/>
+    <path d="M521 152 q8 -14 24 0 t24 -4" stroke="#EDA52F"/>
+    <path d="M458 137 q5 -8 16 0 t16 5" stroke="#EDA52F"/>
+    <path d="M508 131 q8 -9 25 0 t25 2" stroke="#EDA52F"/>
+    <path d="M515 143 q6 -12 17 0 t17 1" stroke="#D88725"/>
+    <path d="M529 150 q5 -13 16 0 t16 1" stroke="#F8BD38"/>
+    <path d="M462 161 q4 -6 11 0 t11 -4" stroke="#F8BD38"/>
+    <path d="M497 163 q5 -13 15 0 t15 -3" stroke="#EDA52F"/>
+    <path d="M460 160 q7 -12 22 0 t22 0" stroke="#F5CE54"/>
+    <path d="M405 143 q5 -12 16 0 t16 -2" stroke="#F8BD38"/>
+    <path d="M394 161 q8 -6 25 0 t25 1" stroke="#D88725"/>
+    <path d="M520 143 q6 -9 18 0 t18 1" stroke="#F8BD38"/>
+    <path d="M457 156 q6 -11 19 0 t19 3" stroke="#F5CE54"/>
+    <path d="M480 124 q7 -12 22 0 t22 -1" stroke="#D88725"/>
+    <path d="M481 153 q6 -8 19 0 t19 4" stroke="#F8BD38"/>
+    <path d="M422 162 q8 -10 24 0 t24 3" stroke="#FFCA47"/>
+    <path d="M404 158 q6 -8 19 0 t19 -1" stroke="#EDA52F"/>
+    <path d="M435 141 q7 -10 20 0 t20 5" stroke="#FFCA47"/>
+    <path d="M447 156 q3 -12 10 0 t10 3" stroke="#EDA52F"/>
+    <path d="M457 128 q4 -10 13 0 t13 3" stroke="#FFCA47"/>
+    <path d="M443 131 q6 -9 19 0 t19 6" stroke="#F8BD38"/>
+    <path d="M497 147 q8 -11 23 0 t23 0" stroke="#F5CE54"/>
+    <path d="M429 166 q4 -13 11 0 t11 4" stroke="#FFCA47"/>
+    <path d="M403 150 q4 -11 13 0 t13 1" stroke="#D88725"/>
+    <path d="M522 131 q4 -13 12 0 t12 -1" stroke="#F8BD38"/>
+    <path d="M422 154 q4 -12 12 0 t12 1" stroke="#EDA52F"/>
+    <path d="M460 142 q6 -10 17 0 t17 -4" stroke="#D88725"/>
+    <path d="M429 140 q7 -11 22 0 t22 0" stroke="#F8BD38"/>
+    <path d="M449 150 q3 -10 10 0 t10 2" stroke="#F8BD38"/>
+    <path d="M457 123 q6 -9 17 0 t17 -1" stroke="#F5CE54"/>
+    <path d="M510 139 q7 -12 20 0 t20 3" stroke="#EDA52F"/>
+    <path d="M435 162 q5 -11 15 0 t15 1" stroke="#D88725"/>
+    <path d="M420 131 q7 -9 22 0 t22 3" stroke="#F8BD38"/>
+    <path d="M491 136 q8 -9 24 0 t24 5" stroke="#EDA52F"/>
+    <path d="M474 163 q4 -11 12 0 t12 6" stroke="#EDA52F"/>
+    <path d="M460 145 q4 -7 12 0 t12 0" stroke="#EDA52F"/>
+    <path d="M452 149 q8 -11 23 0 t23 2" stroke="#D88725"/>
+    <path d="M490 155 q8 -9 25 0 t25 -1" stroke="#EDA52F"/>
+    <path d="M445 165 q5 -11 16 0 t16 4" stroke="#F8BD38"/>
+    <path d="M462 164 q7 -10 22 0 t22 -3" stroke="#F8BD38"/>
+    <path d="M468 135 q4 -9 13 0 t13 5" stroke="#D88725"/>
+    <path d="M514 160 q6 -8 18 0 t18 2" stroke="#FFCA47"/>
+    <path d="M420 164 q8 -10 24 0 t24 2" stroke="#F5CE54"/>
+    <path d="M510 124 q7 -7 22 0 t22 5" stroke="#F5CE54"/>
+    <path d="M437 136 q7 -13 20 0 t20 -1" stroke="#F5CE54"/>
+    <path d="M487 164 q5 -5 16 0 t16 5" stroke="#D88725"/>
+    <path d="M406 150 q3 -8 10 0 t10 1" stroke="#FFCA47"/>
+    <path d="M453 129 q6 -13 19 0 t19 6" stroke="#F8BD38"/>
+    <path d="M395 145 q5 -9 14 0 t14 -4" stroke="#FFCA47"/>
+    <path d="M463 128 q6 -12 19 0 t19 -2" stroke="#D88725"/>
+    <path d="M409 130 q7 -14 20 0 t20 6" stroke="#EDA52F"/>
+    <path d="M534 164 q8 -11 24 0 t24 -4" stroke="#D88725"/>
+    <path d="M504 147 q5 -13 16 0 t16 -2" stroke="#FFCA47"/>
+    <path d="M525 156 q8 -6 23 0 t23 6" stroke="#F5CE54"/>
+  </g>
+
+  <!-- Meatballs -->
+  <g>
+    <circle cx="507" cy="134" r="19" fill="url(#meat-m)" stroke="#9E7548" stroke-width="1.5"/>
+    <circle cx="538" cy="154" r="21" fill="url(#meat-m)" stroke="#9E7548" stroke-width="1.5"/>
+    <g fill="none" stroke="#8D704D" stroke-width="1.5" opacity=".7">
+      <path d="M500 133q7 -10 14 0m-12 5q9 -7 16 1m-17 1q4 5 10 5"/>
+      <path d="M527 151q8 -11 17 -2m-16 8q11 -7 17 1"/>
+    </g>
+  </g>
+
+  <!-- Green garnish bits -->
+  <g fill="#418C32">
+    <path d="M408 112 Q402 95 426 98 Q426 115 408 112Z"/>
+    <path d="M413 105 Q428 86 436 107 L422 122Z"/>
+    <path d="M545 122 Q557 104 573 115 Q564 130 545 122Z"/>
+  </g>
+</g>
+
+<!-- Bowl front Ceramic curve -->
+<path d="M358 143 C365 183 380 218 414 233 C440 245 490 247 517 233 C547 218 569 184 572 143 C559 173 514 189 464 190 C413 189 371 173 358 143Z" fill="url(#bowl-m)"/>
+<path d="M360 147 C378 181 413 190 465 191 C516 190 552 178 570 147" fill="none" stroke="#FFF" stroke-width="5.5" opacity=".9"/>
+<path d="M403 214 C432 235 489 241 526 218" fill="none" stroke="#fff" stroke-width="3.5" opacity=".27"/>
+</svg>
